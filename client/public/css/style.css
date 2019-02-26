@@ -1,11 +1,83 @@
+:root {
+    --color__bg: #dddddd;
+    --color__bg--dark: #282b3d;
+    --color__primary: #36c57d;
+    --color__text: #444444;
+    --color__text--dark: #f5f5f5;
+}
+
 body {
-    display: flex;
     flex-direction: column;
     min-height: 100vh;
 
     font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
     line-height: 1.2em;
-    color: rgb(66, 66, 67);
-    background-color: rgb(234, 234, 235);
+    color: var(--color__text);
+    background-color: var(--color__bg);
+}
+
+.container {
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.d-flex {
+    display: flex;
+}
+
+/* ##### Typing Area Block ##### */
+
+.typing-area {
+    position: fixed;
+    bottom: 0;
+    min-height: 100px;
+    width: 540px;
+}
+
+.typing-area:before {
+    content: ' ';
+    position: absolute;
+    background-image: linear-gradient(to bottom, transparent, var(--color__bg));
+    height: 40px;
+    left: 0;
+    right: 0;
+    top: -40px;
+}
+
+.typing-area__form {
+    padding: 1em;
+    border-bottom: 40px solid var(--color__bg);
+    background-color: white;
+}
+
+.typing-area__input {
+    flex: 1;
+    resize: none;
+    border: none;
+    line-height: 1.4em;
+    color: var(--color__text);
+}
+
+.typing-area__submit {
+    min-width: 80px;
+    background: none;
+    border: none;
+    margin-left: 4px;
+    color: var(--color__text);
+}
+
+.typing-area__submit:hover {
+    cursor: pointer;
+    color: var(--color__bg);
+}
+
+.hover-icon {
+    transition-property: color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
+
+.hover-icon:hover {
+    color: var(--color__primary);
 }

@@ -10,8 +10,20 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    Hello, world.
+<body class="container d-flex">
+
+    <section class="typing-area">
+        <div id="typing-area__form" class="typing-area__form d-flex">
+            <textarea id="typing-area__input" class="typing-area__input"
+                autofocus="autofocus" placeholder="Type something to send..."
+                rows="3">
+            </textarea>
+            <button id="typing-area__submit" class="typing-area__submit hover-icon"
+                onclick="sendMessage();">
+                <i class="fas fa-paper-plane fa-lg hover-icon"></i>
+            </button>
+        </div>
+    </section>
 
     <script src="js/main.js"></script>
 </body>
