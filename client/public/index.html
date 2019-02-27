@@ -16,14 +16,58 @@
         <span class="info__text">Chat</span>
     </section>
 
+    <main id="chat" class="chat">
+        <div class="chat__post d-flex">
+            <img class="chat__avatar" src="http://placehold.jp/50x50.png">
+
+            <div class="chat__body">
+                <div class="d-flex">
+                    <div class="chat__username">
+                        Emily Dove
+                    </div>
+                    <div class="chat__timestamp">
+                        09:13 AM
+                    </div>
+                </div>
+
+                <div class="chat__message">
+                    Look, I wanted to work today...<br>
+                    Let's go out to see the latest exhibition
+                </div>
+            </div>
+        </div>
+
+        <div class="chat__post d-flex">
+            <div class="chat__body">
+                <div class="d-flex">
+                    <div class="chat__username chat__username--sending">
+                        Florian Mysliwietz
+                    </div>
+                    <div class="chat__timestamp">
+                        09:15 AM
+                    </div>
+                </div>
+
+                <div class="chat__message">
+                    Look, I wanted to work today...<br>
+                    Let's go out to see the latest exhibition
+                </div>
+            </div>
+
+            <img class="chat__avatar chat__avatar--sending"
+                 src="http://placehold.jp/50x50.png">
+        </div>
+    </main>
+
+
     <section class="typing-area">
         <div id="typing-area__form" class="typing-area__form d-flex">
-            <textarea id="typing-area__input" class="typing-area__input"
-                autofocus="autofocus" placeholder="Type something to send..."
-                rows="3">
-            </textarea>
+                <textarea id="typing-area__input" class="typing-area__input"
+                          autofocus="autofocus" placeholder="Type something to send..."
+                          rows="3">
+                </textarea>
             <button id="typing-area__submit" class="typing-area__submit hover-icon"
-                onclick="sendMessage();">
+                    onclick="sendMessage();">
                 <i class="fas fa-paper-plane fa-lg hover-icon"></i>
             </button>
         </div>
