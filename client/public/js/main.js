@@ -1,4 +1,4 @@
-console.log('Hello, world.');
+let socket = io();
 
 function sendMessage() {
 	console.info('Implement send-message');
