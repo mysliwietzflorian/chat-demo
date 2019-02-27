@@ -49,6 +49,7 @@ body {
 
 .chat {
     align-items: flex-start;
+    margin-bottom: 160px;
     padding: 2em;
 }
 
