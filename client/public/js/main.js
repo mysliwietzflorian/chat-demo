@@ -12,17 +12,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 function sendMessage() {
-	console.info('Implement send-message');
+	let textarea = document.getElementById('typing-area__input');
+	let message = textarea.value;
 
-	addPostToChat('Emily Dove', 'Hello, world.');
-	addPostToChat(
-		'Florian',
-		'Hi. Are you feeling better today? :)',
-		true
-	);
+	if (/\S/.test(message)) {
+		textarea.value = '';
+		addChatMessage(username, message, true);
+		socket.emit('chat-message', message);
+	}
 }
 
-function addPostToChat(name, message, isSending = false) {
+function addChatMessage(name, message, isSending = false) {
 	let chat = document.getElementById('chat');
 
 	let post = document.createElement('div');
