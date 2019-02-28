@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	button.addEventListener('click', () => {
 		let textarea = document.getElementById('typing-area__input');
 		let message = textarea.value;
+		textarea.value = '';
 
 		if (/\S/.test(message)) {
-			textarea.value = '';
 			addChatMessage(
 				username,
 				message,
