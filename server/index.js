@@ -19,6 +19,7 @@ io.on('connection', socket => {
 
 	socket.on('disconnect', () => {
 		console.log(`[INFO]  User disconnected`);
+		socket.broadcast.emit('user-disconnect', socket.data['username']);
 	});
 
 	socket.on('user-connect', username => {
@@ -29,7 +30,6 @@ io.on('connection', socket => {
 		socket.data['isAuthenticated'] = true;
 		socket.data['username'] = username;
 		console.log(`[INFO]  User authenticated with ${username}`);
-
 		socket.broadcast.emit('user-connect', username);
 	});
 

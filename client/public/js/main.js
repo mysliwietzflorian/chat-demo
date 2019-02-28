@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		console.log(`[INFO]  User connected with ${username}`);
 	});
 
+	socket.on('user-disconnect', username => {
+		console.log(`[INFO]  User disconnected with ${username}`);
+	});
+
 	socket.on('chat-message', data => {
 		addChatMessage(data.username, data.message, data.timestamp);
 	});
