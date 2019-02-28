@@ -32,4 +32,14 @@ io.on('connection', socket => {
 
 		socket.broadcast.emit('user-connect', username);
 	});
+
+	socket.on('chat-message', message => {
+		console.log(`[INFO]  User ${socket.data['username']} sent message`);
+
+		socket.broadcast.emit('chat-message', {
+			'username': socket.data['username'],
+			'message': message,
+			'timestamp':new Date().toLocaleString()
+		});
+	});
 });
