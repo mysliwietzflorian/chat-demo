@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		console.log(`[INFO]  User connected with ${username}`);
 	});
 
+	socket.on('chat-message', data => {
+		addChatMessage(data.username, data.message, data.timestamp);
+	});
+
 	let button = document.getElementById('typing-area__submit');
 	button.addEventListener('click', () => {
 		let textarea = document.getElementById('typing-area__input');
@@ -17,12 +21,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 		if (/\S/.test(message)) {
 			textarea.value = '';
-			addChatMessage(username, message, true);
+			addChatMessage(
+				username,
+				message,
+				new Date().toLocaleString(),
+				true
+			);
 			socket.emit('chat-message', message);
 		}
 	});
 
-	function addChatMessage(name, message, isSending = false) {
+	function addChatMessage(name, message, timestamp, isSending = false) {
 		let chat = document.getElementById('chat');
 
 		let post = document.createElement('div');
@@ -59,7 +68,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 		let chatTimestamp = document.createElement('div');
 		chatTimestamp.className = 'chat__timestamp';
-		chatTimestamp.innerHTML = '08:49 AM';
+		chatTimestamp.innerHTML = timestamp;
 		row.appendChild(chatTimestamp);
 
 		let chatMessage = document.createElement('div');
