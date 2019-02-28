@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", (event) => {
 	const socket = io();
+
+	const username = '#' + Math.floor(Math.random()*16777215)
+		.toString(16);
+
+	socket.emit('user-connect', username);
+
+	socket.on('user-connect', username => {
+		console.log(`[INFO]  User connected with ${username}`);
+	});
 });
 
 function sendMessage() {
