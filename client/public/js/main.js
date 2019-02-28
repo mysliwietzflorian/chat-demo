@@ -1,4 +1,6 @@
-let socket = io();
+document.addEventListener("DOMContentLoaded", (event) => {
+	const socket = io();
+});
 
 function sendMessage() {
 	console.info('Implement send-message');
