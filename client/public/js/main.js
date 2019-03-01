@@ -22,8 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	let button = document.getElementById('typing-area__submit');
-	button.addEventListener('click', () => {
-		let textarea = document.getElementById('typing-area__input');
+	button.addEventListener('click', submitMessage);
+
+	function submitMessage() {
 		let message = textarea.value;
 		textarea.value = '';
 
