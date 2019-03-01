@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (!(event.ctrlKey || event.metaKey || event.altKey)) {
 			textarea.focus();
 		}
+
+		if (event.keyCode === 13 && !(event.shiftKey ||event.ctrlKey)) {
+			submitMessage();
+		}
 	});
 
 	let button = document.getElementById('typing-area__submit');
