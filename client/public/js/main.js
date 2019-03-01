@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	let textarea = document.getElementById('typing-area__input');
 	textarea.value = '';
 
-	socket.emit('user-connect', username);
+	socket.emit('user__connect', username);
 
-	socket.on('user-connect', username => {
+	socket.on('user__connect', username => {
 		console.log(`[INFO]  User connected with ${username}`);
 	});
 
-	socket.on('user-disconnect', username => {
+	socket.on('user__disconnect', username => {
 		console.log(`[INFO]  User disconnected with ${username}`);
 	});
 
