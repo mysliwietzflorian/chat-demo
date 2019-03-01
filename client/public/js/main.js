@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	const username = '#' + Math.floor(Math.random()*16777215)
 		.toString(16);
 
+	let textarea = document.getElementById('typing-area__input');
+	textarea.value = '';
+
 	socket.emit('user-connect', username);
 
 	socket.on('user-connect', username => {
