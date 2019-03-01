@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
 	const socket = io();
 
 	const username = '#' + Math.floor(Math.random()*16777215)
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			);
 			socket.emit('chat-message', message);
 		}
-	});
+	}
 
 	function addChatMessage(name, message, timestamp, isSending = false) {
 		let chat = document.getElementById('chat');
