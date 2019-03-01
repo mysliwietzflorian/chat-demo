@@ -34,14 +34,10 @@ io.on('connection', socket => {
 	});
 
 	socket.on('user__typing-start', () => {
-		console.log(`[INFO]  User ${socket.data['username']} is typing`);
-
 		socket.broadcast.emit('user__typing-start', socket.data['username']);
 	});
 
 	socket.on('user__typing-stop', () => {
-		console.log(`[INFO]  User ${socket.data['username']} stopped typing`);
-
 		socket.broadcast.emit('user__typing-stop', socket.data['username']);
 	});
 
