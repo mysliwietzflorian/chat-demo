@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	let isTyping = false;
 	let lastTypingTime;
 
+	let isTypingMessage = document.getElementById('is-typing-message');
 	let textarea = document.getElementById('typing-area__input');
 	textarea.value = '';
 
@@ -19,6 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	socket.on('user__disconnect', username => {
 		console.log(`[INFO]  User disconnected with ${username}`);
+	});
+
+	socket.on('user__typing-start', username => {
+		isTypingMessage.innerHTML = `${username} is typing...`;
+		isTypingMessage.classList.remove('hidden');
+	});
+
+	socket.on('user__typing-stop', username => {
+		isTypingMessage.innerHTML = '';
+		isTypingMessage.classList.add('hidden');
 	});
 
 	socket.on('chat-message', data => {
