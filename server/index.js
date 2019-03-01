@@ -33,6 +33,14 @@ io.on('connection', socket => {
 		socket.broadcast.emit('user-connect', username);
 	});
 
+	socket.on('user__typing-start', () => {
+		console.log(`[INFO]  User ${socket.data['username']} is typing`);
+	});
+
+	socket.on('user__typing-stop', () => {
+		console.log(`[INFO]  User ${socket.data['username']} stopped typing`);
+	});
+
 	socket.on('chat-message', message => {
 		console.log(`[INFO]  User ${socket.data['username']} sent message`);
 
