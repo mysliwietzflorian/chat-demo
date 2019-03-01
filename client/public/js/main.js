@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (isSending) {
 			chatUsername.className += ' chat__username--sending';
 		}
-		chatUsername.innerHTML = name || 'Username';
+		chatUsername.innerHTML = name;
 		row.appendChild(chatUsername);
 
 		let chatTimestamp = document.createElement('div');
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		let chatMessage = document.createElement('div');
 		chatMessage.className = 'chat__message';
-		chatMessage.innerHTML = message || 'This is a short message.';
+		chatMessage.innerHTML = message;
 		chatBody.appendChild(chatMessage);
 
 		chat.appendChild(post);
