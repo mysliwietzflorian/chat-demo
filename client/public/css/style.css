@@ -27,6 +27,10 @@ body {
     display: flex;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* ##### Info Block ##### */
 
 .info {
@@ -109,10 +113,22 @@ body {
     content: ' ';
     position: absolute;
     background-image: linear-gradient(to bottom, transparent, var(--color__bg));
-    height: 40px;
+    height: 80px;
     left: 0;
     right: 0;
-    top: -40px;
+    top: -80px;
+}
+
+.typing-area__is-typing-message {
+    position: absolute;
+    border: 2px solid var(--color__bg);
+    border-radius: 20px;
+    top: -48px;
+    padding: 8px 32px;
+    background-color: white;
+
+    font-size: 0.8em;
+    color: var(--color__text--light);
 }
 
 .typing-area__form {
