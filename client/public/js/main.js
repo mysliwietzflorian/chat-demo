@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	const username = '#' + Math.floor(Math.random()*16777215)
 		.toString(16);
 
+	const TYPING_UPDATE_INTERVAL = 2000; // ms
+	let isTyping = false;
+	let lastTypingTime;
+
 	let textarea = document.getElementById('typing-area__input');
 	textarea.value = '';
 
@@ -21,6 +25,23 @@ document.addEventListener("DOMContentLoaded", () => {
 		addChatMessage(data.username, data.message, data.timestamp);
 	});
 
+	textarea.addEventListener('input', () => {
+		if (!isTyping) {
+			socket.emit('user__typing-start');
+			isTyping = true;
+		}
+		lastTypingTime = (new Date()).getTime();
+
+		setTimeout(() => {
+			let currentTime = (new Date()).getTime();
+			let diff = currentTime - lastTypingTime;
+			if (diff >= TYPING_UPDATE_INTERVAL && isTyping) {
+				socket.emit('user__typing-stop');
+				isTyping = false;
+			}
+		}, TYPING_UPDATE_INTERVAL);
+	});
+
 	document.addEventListener('keypress', (event) => {
 		if (!(event.ctrlKey || event.metaKey || event.altKey)) {
 			textarea.focus();
@@ -36,6 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	button.addEventListener('click', submitMessage);
 
 	function submitMessage() {
+		socket.emit('user__typing-stop');
+		isTyping = false;
+
 		let message = textarea.value;
 		textarea.value = '';
 
