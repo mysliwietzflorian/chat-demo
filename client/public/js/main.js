@@ -21,6 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		addChatMessage(data.username, data.message, data.timestamp);
 	});
 
+	document.addEventListener('keypress', (event) => {
+		if (!(event.ctrlKey || event.metaKey || event.altKey)) {
+			textarea.focus();
+		}
+	});
+
 	let button = document.getElementById('typing-area__submit');
 	button.addEventListener('click', submitMessage);
 
