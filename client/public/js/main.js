@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		let chatMessage = document.createElement('div');
 		chatMessage.className = 'chat__message';
-		chatMessage.innerHTML = message;
+		chatMessage.innerHTML = message.split('\n').join('<br>');
 		chatBody.appendChild(chatMessage);
 
 		chat.appendChild(post);
