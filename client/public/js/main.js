@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			addChatMessage(
 				username,
 				message,
-				new Date().toLocaleString(),
+				new Date().toLocaleString("en-US"),
 				true
 			);
 			socket.emit('chat-message', message);

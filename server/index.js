@@ -47,7 +47,7 @@ io.on('connection', socket => {
 		socket.broadcast.emit('chat-message', {
 			'username': socket.data['username'],
 			'message': message,
-			'timestamp': new Date().toLocaleString()
+			'timestamp': new Date().toLocaleString("en-US")
 		});
 	});
 });
