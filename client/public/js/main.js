@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		isTypingMessage.classList.remove('hidden');
 	});
 
-	socket.on('user__typing-stop', username => {
+	socket.on('user__typing-stop', () => {
 		isTypingMessage.innerHTML = '';
 		isTypingMessage.classList.add('hidden');
 	});
