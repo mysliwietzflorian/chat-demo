@@ -5,6 +5,8 @@ let io = require('socket.io')(server);
 
 const PORT = 8080;
 
+let usersTyping = [];
+
 server.listen(PORT, () => {
 	console.log(`[INFO]  Server listening on ${PORT}`);
 });
@@ -38,11 +40,20 @@ io.on('connection', socket => {
 			return;
 		}
 
+		usersTyping.push(socket.data['username']);
 		socket.broadcast.emit('user__typing-start', socket.data['username']);
 	});
 
 	socket.on('user__typing-stop', () => {
-		socket.broadcast.emit('user__typing-stop', socket.data['username']);
+		if (usersTyping.includes(socket.data['username'])) {
+			usersTyping.splice(
+				usersTyping.indexOf(socket.data['username']), 1
+			);
+		}
+
+		if (usersTyping.length === 0) {
+			io.emit('user__typing-stop');
+		}
 	});
 
 	socket.on('chat-message', message => {
