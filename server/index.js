@@ -34,6 +34,10 @@ io.on('connection', socket => {
 	});
 
 	socket.on('user__typing-start', () => {
+		if (socket.data['username'] === undefined) {
+			return;
+		}
+
 		socket.broadcast.emit('user__typing-start', socket.data['username']);
 	});
 
