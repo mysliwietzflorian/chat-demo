@@ -36,18 +36,20 @@ io.on('connection', socket => {
 	});
 
 	socket.on('user__typing-start', () => {
-		if (socket.data['username'] === undefined) {
+		let username = socket.data['username'];
+		if (username === undefined) {
 			return;
 		}
 
-		usersTyping.push(socket.data['username']);
-		socket.broadcast.emit('user__typing-start', socket.data['username']);
+		usersTyping.push(username);
+		socket.broadcast.emit('user__typing-start', username);
 	});
 
 	socket.on('user__typing-stop', () => {
-		if (usersTyping.includes(socket.data['username'])) {
+		let username = socket.data['username'];
+		if (usersTyping.includes(username)) {
 			usersTyping.splice(
-				usersTyping.indexOf(socket.data['username']), 1
+				usersTyping.indexOf(username), 1
 			);
 		}
 
@@ -57,10 +59,12 @@ io.on('connection', socket => {
 	});
 
 	socket.on('chat-message', message => {
-		console.log(`[INFO]  User ${socket.data['username']} sent message`);
+		let username = socket.data['username'];
+
+		console.log(`[INFO]  User ${username} sent message`);
 
 		socket.broadcast.emit('chat-message', {
-			'username': socket.data['username'],
+			'username': username,
 			'message': message,
 			'timestamp': new Date().toLocaleString("en-US")
 		});
