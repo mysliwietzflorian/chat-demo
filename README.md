@@ -3,7 +3,9 @@
 This is a very simple chat-demo application built on top of
 [expressjs](https://expressjs.com/) and [socket.io](https://socket.io/). 
 
-![chat demonstration](img/screenshot-01.png)
+<p align="center">
+  <img alt="chat demonstration" src="img/screenshot-01.png">
+</p>
 
 ## Installation
 
