@@ -20,6 +20,8 @@ io.on('connection', socket => {
 	console.log(`[INFO]  User connected`);
 
 	socket.on('disconnect', () => {
+		onUserStopsTyping();
+
 		console.log(`[INFO]  User disconnected`);
 		socket.broadcast.emit('user__disconnect', socket.data['username']);
 	});
@@ -45,18 +47,7 @@ io.on('connection', socket => {
 		socket.broadcast.emit('user__typing-start', username);
 	});
 
-	socket.on('user__typing-stop', () => {
-		let username = socket.data['username'];
-		if (usersTyping.includes(username)) {
-			usersTyping.splice(
-				usersTyping.indexOf(username), 1
-			);
-		}
-
-		if (usersTyping.length === 0) {
-			io.emit('user__typing-stop');
-		}
-	});
+	socket.on('user__typing-stop', onUserStopsTyping);
 
 	socket.on('chat-message', message => {
 		let username = socket.data['username'];
@@ -69,4 +60,17 @@ io.on('connection', socket => {
 			'timestamp': new Date().toLocaleString("en-US")
 		});
 	});
+
+	function onUserStopsTyping() {
+		let username = socket.data['username'];
+		if (usersTyping.includes(username)) {
+			usersTyping.splice(
+				usersTyping.indexOf(username), 1
+			);
+		}
+
+		if (usersTyping.length === 0) {
+			io.emit('user__typing-stop');
+		}
+	}
 });
