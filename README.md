@@ -10,6 +10,7 @@ This is a very simple chat-demo application built on top of
 ## Features
 
 - (Hopefully) simple and minimal markup and code
+- Usage of vanilla javascript and BEM for styling
 - Multiple user support
 - "User is typing..." message for other participants
 - Locally, a chat message is just appended and does not use server notification
