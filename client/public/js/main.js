@@ -74,11 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		let message = textarea.value;
 		textarea.value = '';
 
+		dateTime = new Date();
 		if (/\S/.test(message)) {
 			addChatMessage(
 				username,
 				message,
-				new Date().toLocaleString("en-US"),
+				`${dateTime.getHours()}:${dateTime.getMinutes()}`,
 				true
 			);
 			socket.emit('chat-message', message);

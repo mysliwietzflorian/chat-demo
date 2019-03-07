@@ -54,10 +54,11 @@ io.on('connection', socket => {
 
 		console.log(`[INFO]  User ${username} sent message`);
 
+		dateTime = new Date();
 		socket.broadcast.emit('chat-message', {
 			'username': username,
 			'message': message,
-			'timestamp': new Date().toLocaleString("en-US")
+			'timestamp': `${dateTime.getHours()}:${dateTime.getMinutes()}`
 		});
 	});
 
