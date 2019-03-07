@@ -7,6 +7,13 @@ This is a very simple chat-demo application built on top of
   <img alt="chat demonstration" src="img/screenshot-01.png">
 </p>
 
+## Features
+
+- (Hopefully) simple and minimal markup and code
+- Multiple user support
+- "User is typing..." message for other participants
+- Locally, a chat message is just appended and does not use server notification
+
 ## Installation
 
 Be sure to have [node and npm](https://www.npmjs.com/) installed globally.
