@@ -4,6 +4,7 @@
   "description": "A simple demonstration of a chat with socket.io",
   "main": "index.js",
   "scripts": {
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Florian Mysliwietz",
