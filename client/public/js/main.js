@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			textarea.focus();
 		}
 
-		if (event.keyCode === 13 && !(event.shiftKey ||event.ctrlKey)) {
+		if (event.keyCode === 13 && !(event.shiftKey || event.ctrlKey)) {
 			event.preventDefault();
 			submitMessage();
 		}
@@ -100,15 +100,15 @@ document.addEventListener("DOMContentLoaded", () => {
 			`
 		}
 
-		chatPostHtml += `			
+		chatPostHtml += `
 				<div class="chat__body">
 				<div class="d-flex">
 				<div class="chat__username chat__username${isSending ? '--sending' : ''}">
 					${name}
 				</div>
-				
+
 				<div class="chat__timestamp">${timestamp}</div>
-				
+
 				</div>
 					<div class="chat__message">${message}</div>
 				</div>
