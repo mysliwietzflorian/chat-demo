@@ -89,6 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	function addChatMessage(name, message, timestamp, isSending = false) {
 		let chat = document.getElementById('chat');
 
+		// Replace linebreaks with html-break-tags
+		message = message.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
 		let chatPostHtml = `
 			<div class="chat__post d-flex">
 		`;
